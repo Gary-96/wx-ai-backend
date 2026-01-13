@@ -8,8 +8,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // 你的 AI 接口地址 (DeepSeek)
-const AI_API_URL = 'https://api.deepseek.com/chat/completions';
-const API_KEY = process.env.AI_API_KEY;
+const AI_API_URL = 'https://api.siliconflow.cn/v1/chat/completions';
+const API_KEY = 'sk-slqcohtdnfbnbxooekhluhqkuaiwkyfftomogzqvnyyaddse'; // 去硅基流动后台复制
 
 app.post('/generate', async (req, res) => {
   try {
