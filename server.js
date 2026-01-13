@@ -80,12 +80,14 @@ app.post('/generate', async (req, res) => {
     res.send({ code: 0, data: aiText });
 
   } catch (error) {
-    console.error("AI调用失败:", error.response ? error.response.data : error.message);
-    res.send({ code: -1, error: '灵感枯竭了，请重试' });
+    console.error("AI调用失败:", error);
+    
+    // 获取详细的错误信息
+    const errorDetail = error.response ? JSON.stringify(error.response.data) : error.message;
+    
+    // 直接把错误发回给小程序，这样你就能在控制台看到了！
+    res.send({ 
+      code: -1, 
+      error: 'AI拒绝服务: ' + errorDetail 
+    });
   }
-});
-
-const port = process.env.PORT || 80;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
