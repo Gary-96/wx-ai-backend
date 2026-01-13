@@ -61,7 +61,7 @@ app.post('/generate', async (req, res) => {
 
     // --- 发送请求 ---
     const response = await axios.post(AI_API_URL, {
-        model: "deepseek-chat",
+        model: "deepseek-ai/DeepSeek-V3", // ✅ 必须一字不差
         messages: [
           // System: 设定后台规则
           {"role": "system", "content": systemPrompt},
